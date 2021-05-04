@@ -1,11 +1,14 @@
 import sys
+import itertools
 
-change = 1000 - int(sys.stdin.readline())
-coin = [500, 100, 50, 10, 5, 1]
-count = 0
+n, s = map(int, sys.stdin.readline().split())
+data = list(map(int, sys.stdin.readline().split()))
+cnt = 0
 
-for c in coin:
-    count += change // c
-    change %= c
+for r in range(1, n + 1):
+    nCr = list(itertools.combinations(data, r))
+    for item in nCr:
+        if s == sum(item):
+            cnt += 1
 
-print(count)
+print(cnt)
