@@ -1,3 +1,4 @@
 import sys
 
-print(sum(map(int, sys.stdin.readline().split())))
+A, B = map(int, sys.stdin.readline().split())
+print(A - B)
