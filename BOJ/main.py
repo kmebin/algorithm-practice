@@ -1,12 +1,13 @@
 import sys
 
 n = int(sys.stdin.readline())
-fibo = [0] * (n + 1)
 
-for x in range(n + 1):
-    if x == 0 or x == 1:
-        fibo[x] = x
+d = [0] * (n + 1)
+
+for i in range(n + 1):
+    if i == 0 or i == 1 or i == 2:
+        d[i] = i
     else:
-        fibo[x] = fibo[x - 1] + fibo[x - 2]
+        d[i] = (d[i - 1] + d[i - 2]) % 15746
 
-print(fibo[n])
+print(d[n])
