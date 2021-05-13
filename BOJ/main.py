@@ -1,17 +1,13 @@
 import sys
 
-n = int(sys.stdin.readline())
-w = [int(sys.stdin.readline()) for _ in range(n)]
-w.insert(0, 0)
+n, k = map(int, sys.stdin.readline().split())
+v = [int(sys.stdin.readline()) for _ in range(n)]
 
-d = [0] * (n + 1)
+dp = [0] * (k + 1)
+dp[0] = 1
 
-for i in range(1, n + 1):
-    if i == 1:
-        d[i] = w[i]
-    elif i == 2:
-        d[i] = w[i] + w[i - 1]
-    else:
-        d[i] = max(d[i - 1], max(w[i] + d[i - 2], w[i] + w[i - 1] + d[i - 3]))
+for i in range(n):
+    for j in range(v[i], k + 1):
+        dp[j] += dp[j - v[i]]
 
-print(d[n])
+print(dp[k])
